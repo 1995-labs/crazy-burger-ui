@@ -13,7 +13,7 @@ export type ClientType = {
   // tax: { label: string; value: number; enable: boolean }[];
   // };
   alphaSenderID: string;
-
+  //
   // menuTags: ClientCatalogTagConfigType[];
   // more?
 };
