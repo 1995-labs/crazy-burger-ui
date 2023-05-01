@@ -1,6 +1,4 @@
-import firebase from "firebase/compat/app";
 import React, { createContext, useContext, useState } from "react";
-// import { analytics } from "../firebase";
 import { CartItemType, ClientCatalogItemType } from "../types/Client";
 
 export type CartContextType = {
@@ -43,12 +41,10 @@ export function CartProvider({ children }: ProviderType) {
 
   const addToCart = (product: CartItemType) => {
     setCart([...cart, product]);
-    firebase.analytics().logEvent("add_to_cart");
   };
 
   const removeFromCart = (product: CartItemType) => {
     setCart(cart.filter((item) => item.cartId !== product.cartId));
-    firebase.analytics().logEvent("remove_from_cart");
   };
 
   const cartIncludes = (product: ClientCatalogItemType) =>

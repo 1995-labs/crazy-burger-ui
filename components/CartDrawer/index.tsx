@@ -26,7 +26,6 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import PaystackPop from "@paystack/inline-js";
-import firebase from "firebase/compat/app";
 import { nanoid } from "nanoid";
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import { FiShoppingCart, FiX } from "react-icons/fi";
@@ -696,13 +695,11 @@ const PayButton = ({
   );
 
   const paymentSuccess = () => {
-    firebase.analytics().logEvent("purchase");
     forward();
     clearCart();
   };
 
   const paymentFail = () => {
-    firebase.analytics().logEvent("order_abandoned");
     orderId.current = nanoid();
   };
 
@@ -820,7 +817,6 @@ const PayButton = ({
       })
       .catch((error) => {
         // console.log({ error });
-        firebase.analytics().logEvent("order_failed", { error });
         toast({
           title: "We failed to place your order.",
           description:

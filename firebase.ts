@@ -1,11 +1,7 @@
-import "firebase/compat/analytics";
 import firebase from "firebase/compat/app";
-import "firebase/compat/app-check";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import "firebase/compat/functions";
-import "firebase/compat/messaging";
-import "firebase/compat/performance";
 
 declare global {
   interface Window {
@@ -18,9 +14,6 @@ const firebaseConfig = {
   authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
   projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
   storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
 };
 
 let app: firebase.app.App;
@@ -32,7 +25,6 @@ if (typeof window !== "undefined") {
   } else {
     app = firebase.initializeApp(firebaseConfig);
   }
-  // if ("measurementId" in firebaseConfig) firebase.analytics();
   // firebase.performance();
 }
 // const appCheck = typeof window !== "undefined" && firebase.appCheck();

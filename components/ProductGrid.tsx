@@ -1,6 +1,5 @@
 import { ScaleFade, SimpleGrid } from "@chakra-ui/react";
-import firebase from "firebase/compat/app";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { useSearchContext } from "../contexts/SearchContext";
 import { useStoreMenuContext } from "../contexts/StoreMenuContext";
 import { useStoreTagsContext } from "../contexts/StoreTagsContext";
@@ -33,10 +32,6 @@ export const ProductGrid = () => {
   const { width } = useWindowSize();
   const { tags, isTagsLoading } = useStoreTagsContext();
   const { menu, isMenuLoading } = useStoreMenuContext();
-
-  useEffect(() => {
-    firebase.analytics().logEvent("view_item_list");
-  }, []);
 
   const getColumns = useCallback(() => gridCalculator(width), [width]);
 
