@@ -9,12 +9,28 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/node": "18.16.3",
-    "@types/react": "18.2.0",
-    "@types/react-dom": "18.2.1",
-    "next": "13.3.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "5.0.4"
+    "@chakra-ui/react": "^2.5.5",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@heroicons/react": "^1.0.5",
+    "@next/font": "^13.1.6",
+    "@paystack/inline-js": "^2.12.6",
+    "@react-google-maps/api": "^2.7.0",
+    "dayjs": "^1.10.7",
+    "email-validator": "^2.0.4",
+    "firebase": "^9.6.11",
+    "firebaseui": "^6.0.2",
+    "framer-motion": "^8.5.4",
+    "lucide-react": "^0.105.0-alpha.4",
+    "next": "^13.1.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-google-autocomplete": "^2.4.2",
+    "react-google-recaptcha-v3": "^1.9.7",
+    "react-icons": "^4.3.1",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-paystack": "^4.0.3",
+    "react-rating-stars-component": "^2.2.0",
+    "swr": "^1.2.0"
   }
 }
