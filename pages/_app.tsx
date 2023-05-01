@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <Script
         defer
-        data-domain="thewingmangh.com"
+        data-domain="crazyburgergh.com"
         src="https://plausible.io/js/script.js"
       />
       <style jsx global>{`
