@@ -29,8 +29,12 @@ function MyApp({ Component, pageProps }: AppProps) {
           name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
         />
-        <link rel="icon" type="image/x-icon" href="/wingman_logo.png"></link>
-        <title>The Wingman - Order Online</title>
+        <link
+          rel="icon"
+          type="image/x-icon"
+          href="/crazy_burger_logo.png"
+        ></link>
+        <title>Crazy Burger - Order Online</title>
       </Head>
       <Script
         defer

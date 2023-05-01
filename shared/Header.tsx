@@ -68,8 +68,8 @@ export const Header = () => {
               <Image
                 // width="275px"
                 height="45px"
-                src="/wingman_logo.png"
-                alt="the wingman logo"
+                src="/crazy_burger_logo.png"
+                alt="the crazy_burger logo"
                 draggable="false"
                 onClick={() => router.push("/")}
               />
