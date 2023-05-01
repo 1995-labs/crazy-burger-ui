@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 // Hook
 export const useWindowSize = () => {
-  // Initialize state with undefined width/height so server and client renders match
+  // Initialize state with undefined widt h/height so server and client renders match
   // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
   const [windowSize, setWindowSize] = useState({
     width: undefined,
