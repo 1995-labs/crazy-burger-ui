@@ -126,7 +126,8 @@ export const ProductCard = ({ menuItem }: Props) => {
           {loading && (
             <IconButton
               size={"lg"}
-              colorScheme={"red"}
+              // colorScheme={"red"}
+              backgroundColor="gray.800"
               width={"100%"}
               boxShadow="md"
               isLoading

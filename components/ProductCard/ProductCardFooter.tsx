@@ -83,12 +83,12 @@ export const ProductCardFooter = ({ menuItem, options, discounts }: Props) => {
       >
         {cartIncludes(menuItem) && (
           <IconButton
-            backgroundColor="red.800"
+            backgroundColor="gray.800"
             _hover={{
-              backgroundColor: "red.600",
+              backgroundColor: "gray.600",
             }}
             _active={{
-              backgroundColor: "red.600",
+              backgroundColor: "gray.600",
             }}
             isDisabled={false}
             boxShadow="md"
@@ -101,7 +101,14 @@ export const ProductCardFooter = ({ menuItem, options, discounts }: Props) => {
         )}
 
         <Button
-          colorScheme={"red"}
+          backgroundColor="gray.900"
+          _hover={{
+            backgroundColor: "gray.600",
+          }}
+          _active={{
+            backgroundColor: "gray.600",
+          }}
+          textColor={"white"}
           width={"100%"}
           boxShadow="md"
           onClick={handleAddToCartClick}
@@ -200,10 +207,17 @@ const ConfigDrawer = ({
             <Button
               size="lg"
               isDisabled={!passesAddValidation() || !passesRemoveValidation()}
-              colorScheme="red"
+              backgroundColor="gray.900"
+              _hover={{
+                backgroundColor: "gray.600",
+              }}
+              _active={{
+                backgroundColor: "gray.600",
+              }}
               width={"100%"}
               onClick={handleSubmitItem}
               type="submit"
+              textColor={"white"}
               boxShadow="md"
               leftIcon={<FiShoppingCart size="24px" />}
             >
@@ -227,7 +241,7 @@ const OptionsContainer = ({
         fontWeight={"bold"}
         textColor={"white"}
         textAlign={"center"}
-        backgroundColor={"red.800"}
+        backgroundColor={"gray.900"}
         p={2}
         mb={2}
       >

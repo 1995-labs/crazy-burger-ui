@@ -13,7 +13,7 @@ export const PageLoader = () => {
         thickness="4px"
         speed="1s"
         emptyColor="gray.200"
-        color="red.500"
+        color="black.500"
         size="xl"
       />
     </Box>

@@ -40,8 +40,16 @@ export const ToggleNav = () => {
             onClick={() => {
               setFilters([]);
             }}
+            textColor={"white"}
             boxShadow={"sm"}
-            colorScheme={filters.length === 0 ? "red" : "gray"}
+            backgroundColor={filters.length === 0 ? "gray.900" : "gray.400"}
+            _hover={{
+              backgroundColor: "gray.900",
+            }}
+            _active={{
+              backgroundColor: filters.length === 0 ? "gray.900" : "gray.400",
+            }}
+            // colorScheme={filters.length === 0 ? "red" : "gray"}
             variant={filters.length === 0 ? "solid" : "outline"}
             // variant="solid"
           >
@@ -61,7 +69,19 @@ export const ToggleNav = () => {
               onClick={() => {
                 setFilters([tag.id]);
               }}
-              colorScheme={filters.includes(tag.id) ? "red" : "gray"}
+              backgroundColor={
+                filters.includes(tag.id) ? "gray.900" : "gray.400"
+              }
+              _hover={{
+                backgroundColor: "gray.900",
+              }}
+              _active={{
+                backgroundColor: filters.includes(tag.id)
+                  ? "gray.900"
+                  : "gray.400",
+              }}
+              textColor={"white"}
+              // colorScheme={filters.includes(tag.id) ? "red" : "gray"}
               variant={filters.includes(tag.id) ? "solid" : "outline"}
             >
               {filters.includes(tag.id) ? "Showing" : ""} {tag.label}
