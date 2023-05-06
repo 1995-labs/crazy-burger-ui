@@ -102,7 +102,7 @@ export const Footer = () => {
               target="_blank"
               rel="noreferrer"
               // color="red.100"
-              href="https://www.instagram.com/thewingmangh"
+              href="https://www.instagram.com/crazyburgergh"
             >
               <IconButton
                 boxShadow={"sm"}
@@ -115,7 +115,7 @@ export const Footer = () => {
               target="_blank"
               rel="noreferrer"
               // color="red.100"
-              href="https://www.facebook.com/thewingmangh/"
+              href="https://www.facebook.com/crazyburgergh"
             >
               <IconButton
                 boxShadow={"sm"}
@@ -128,7 +128,7 @@ export const Footer = () => {
               target="_blank"
               rel="noreferrer"
               // color="red.100"
-              href="https://twitter.com/thewingmangh"
+              href="https://twitter.com/crazyburgergh"
             >
               <IconButton
                 boxShadow={"sm"}
