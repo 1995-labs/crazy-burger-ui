@@ -23,6 +23,7 @@ import { charka_dark_color } from "./Header";
 const LocationPopper = () => {
   const { branch, setBranch, loading, branches } = useBranch();
   const router = useRouter();
+
   return (
     <Popover>
       <PopoverTrigger>
@@ -43,11 +44,12 @@ const LocationPopper = () => {
             <Select
               value={branch?.id}
               isDisabled={branches.length === 1}
-              onChange={(e) =>
-                setBranch(
-                  branches.find((branch) => branch.id === e.target.value)
-                )
-              }
+              onChange={(e) => {
+                const newBranch = branches.find(
+                  (branch) => branch.id === e.target.value
+                );
+                setBranch(newBranch);
+              }}
               placeholder="Select option"
             >
               {branches.map((branch) => {
