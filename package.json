@@ -34,11 +34,11 @@
     "swr": "^1.2.0"
   },
   "devDependencies": {
-    "typescript": "5.0.4",
     "@sentry/webpack-plugin": "^1.18.4",
     "@types/node": "16.11.12",
     "@types/react": "17.0.37",
     "eslint": "8.4.1",
-    "eslint-config-next": "^13.1.6"
+    "eslint-config-next": "^13.1.6",
+    "typescript": "5.0.4"
   }
 }
