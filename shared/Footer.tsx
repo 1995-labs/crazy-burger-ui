@@ -148,7 +148,16 @@ export const Footer = () => {
             // color="red.100"
             href="https://www.majorlabsgh.com"
           >
-            MAJOR
+                <img
+              src="/major_logo_v5.jpg"
+              alt="major labs"
+              style={{
+                width: "39px",
+                height: "26px",
+                padding: "0",
+                paddingRight: "10px",
+              }}
+            />
           </Link>
         </Box>
       </Flex>
