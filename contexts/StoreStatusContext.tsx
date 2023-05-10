@@ -1,5 +1,6 @@
 import { useToast } from "@chakra-ui/react";
 import { createContext, useEffect } from "react";
+import { BranchPrompt } from "../pages";
 import { useBranch } from "./BranchContext";
 
 const StoreStatusContext = createContext({});
@@ -33,6 +34,7 @@ export const StoreStatusProvider = ({ children }) => {
 
   return (
     <StoreStatusContext.Provider value={{}}>
+      <BranchPrompt />
       {children}
     </StoreStatusContext.Provider>
   );

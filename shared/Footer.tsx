@@ -15,12 +15,13 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { Map } from "lucide-react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { FiFacebook, FiInstagram, FiMapPin, FiTwitter } from "react-icons/fi";
 import { useBranch } from "../contexts/BranchContext";
 import { charka_dark_color } from "./Header";
 
-const LocationPopper = () => {
+export const LocationPopper = () => {
   const { branch, setBranch, loading, branches } = useBranch();
   const router = useRouter();
 
@@ -148,7 +149,12 @@ export const Footer = () => {
             // color="red.100"
             href="https://www.majorlabsgh.com"
           >
-            MAJOR
+            <Image
+              src="/major_logo_v5.jpg"
+              alt="major labs"
+              width={39}
+              height={26}
+            />
           </Link>
         </Box>
       </Flex>
