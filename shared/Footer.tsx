@@ -14,18 +14,22 @@ import {
   Select,
   Text,
   useColorModeValue,
-  useOutsideClick,
 } from "@chakra-ui/react";
-import { Map } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import { useRef } from "react";
-import { FiFacebook, FiInstagram, FiMapPin, FiTwitter } from "react-icons/fi";
+import { useRef, useState } from "react";
+import {
+  FiCheck,
+  FiFacebook,
+  FiInstagram,
+  FiMapPin,
+  FiTwitter,
+} from "react-icons/fi";
 import { useBranch } from "../contexts/BranchContext";
 import { charka_dark_color } from "./Header";
 
 export const LocationPopper = () => {
   const ref = useRef(null);
+  const [newBranchOption, setNewBranchOption] = useState(null);
   const {
     branch,
     setBranch,
@@ -34,85 +38,80 @@ export const LocationPopper = () => {
     showQuickView,
     setShowQuickView,
   } = useBranch();
-  const router = useRouter();
-
-  useOutsideClick({
-    ref: ref,
-    handler: () => {
-      setShowQuickView(false);
-    },
-  });
+  // const router = useRouter();
 
   return (
-    <Box ref={ref}>
-      <Popover isOpen={showQuickView}>
-        <PopoverTrigger>
-          <IconButton
-            isLoading={loading}
-            icon={<FiMapPin size="24px" />}
-            aria-label="Map"
-            onClick={() => {
-              setShowQuickView(true);
-            }}
-            boxShadow={"sm"}
-          />
-          {/* <Button>Trigger</Button> */}
-        </PopoverTrigger>
-        <PopoverContent>
-          <PopoverArrow />
-          {/* <PopoverCloseButton />
+    <Popover isOpen={showQuickView}>
+      <PopoverTrigger>
+        <IconButton
+          isLoading={loading}
+          icon={<FiMapPin size="24px" />}
+          aria-label="Map"
+          onClick={() => {
+            setShowQuickView(true);
+          }}
+          boxShadow={"sm"}
+        />
+        {/* <Button>Trigger</Button> */}
+      </PopoverTrigger>
+      <PopoverContent>
+        <PopoverArrow />
+        {/* <PopoverCloseButton />
         <PopoverHeader>Confirmation!</PopoverHeader> */}
-          <PopoverBody p={0}>
-            <Flex p={2} justifyContent={"center"}>
-              <FiMapPin size="24px" />
-              <Text ml={2} fontWeight={"bold"}>
-                Change Branch
-              </Text>
-            </Flex>
-            <Divider />
-            <Box p={2}>
-              <Select
-                value={branch?.id}
-                isDisabled={branches.length === 1}
-                onChange={(e) => {
-                  if (e.target.value) {
-                    console.log(e.target.value);
-                    const newBranch = branches.find(
-                      (branch) => branch.id === e.target.value
-                    );
-                    setBranch(newBranch);
-                  }
-                  setShowQuickView(false);
-                }}
-                placeholder="Select option"
-              >
-                {branches.map((branch) => {
-                  return (
-                    <option key={branch.id} value={branch.id}>
-                      {branch.name}
-                    </option>
+        <PopoverBody p={0}>
+          <Flex p={2} justifyContent={"center"}>
+            <FiMapPin size="24px" />
+            <Text ml={2} fontWeight={"bold"}>
+              Change Branch
+            </Text>
+          </Flex>
+          <Divider />
+          <Box p={2}>
+            <Select
+              value={newBranchOption?.id}
+              isDisabled={branches.length === 1}
+              onChange={(e) => {
+                if (e.target.value) {
+                  console.log(e.target.value);
+                  const newBranch = branches.find(
+                    (branch) => branch.id === e.target.value
                   );
-                })}
-              </Select>
-            </Box>
-            <Divider />
-            <Box p={2}>
-              <Button
-                onClick={() =>
-                  router.push(
-                    `https://maps.google.com/?q=${branch.coordinates.lat},${branch.coordinates.lng}`
-                  )
+                  setNewBranchOption(newBranch);
+                } else {
+                  setNewBranchOption(branch);
                 }
-                width={"100%"}
-                leftIcon={<Map size={"24px"} />}
-              >
-                Open Directions
-              </Button>
-            </Box>
-          </PopoverBody>
-        </PopoverContent>
-      </Popover>
-    </Box>
+
+                // setShowQuickView(false);
+              }}
+              placeholder="Select option"
+            >
+              {branches.map((branch) => {
+                return (
+                  <option key={branch.id} value={branch.id}>
+                    {branch.name}
+                  </option>
+                );
+              })}
+            </Select>
+          </Box>
+          <Divider />
+          <Box p={2}>
+            <Button
+              boxShadow={"sm"}
+              isDisabled={!newBranchOption}
+              onClick={() => {
+                setBranch(newBranchOption);
+                setShowQuickView(false);
+              }}
+              width={"100%"}
+              leftIcon={<FiCheck size={"24px"} />}
+            >
+              Set Branch
+            </Button>
+          </Box>
+        </PopoverBody>
+      </PopoverContent>
+    </Popover>
   );
 };
 
