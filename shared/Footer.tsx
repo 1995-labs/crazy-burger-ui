@@ -98,6 +98,8 @@ export const LocationPopper = () => {
           <Box p={2}>
             <Button
               boxShadow={"sm"}
+              colorScheme="green"
+              variant={"solid"}
               isDisabled={!newBranchOption}
               onClick={() => {
                 setBranch(newBranchOption);
