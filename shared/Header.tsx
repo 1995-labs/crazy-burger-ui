@@ -4,7 +4,6 @@ import {
   Divider,
   Flex,
   Image,
-  useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
@@ -14,11 +13,11 @@ import { OrderDrawer } from "../components/OrderDrawer";
 import { ProfileDrawer } from "../components/ProfileDrawer";
 import { ToggleNav } from "../components/ToggleNav";
 import { UserCentric } from "../components/UserCentric";
-import { useBranch } from "../contexts/BranchContext";
-import { useCart } from "../contexts/CartContext";
-import { useUserRecord } from "../contexts/RecordContext";
-import { useAuth } from "../contexts/UserContext";
 import { useWindowSize } from "../hooks/useWindowSize";
+import { useBranch } from "../major/internals/BranchContext";
+import { useCart } from "../major/internals/CartContext";
+import { useUserRecord } from "../major/internals/RecordContext";
+import { useAuth } from "../major/internals/UserContext";
 const CartDrawer = dynamic(
   () => import("../components/CartDrawer").then((mod) => mod.CartDrawer),
   { ssr: false }
@@ -31,7 +30,6 @@ export const Header = () => {
   const { authUser } = useAuth();
   const { record } = useUserRecord();
   const value = useColorModeValue("white", charka_dark_color);
-  const { colorMode, toggleColorMode } = useColorMode();
   const { branch } = useBranch();
   const { width } = useWindowSize();
   const { cart } = useCart();
@@ -89,7 +87,6 @@ export const Header = () => {
             )}
           </ButtonGroup>
           <ButtonGroup alignItems={"center"} variant="outline" display="flex">
-            {/* {!authUser && <LogInDrawer />} */}
             {branch && <CartDrawer />}
           </ButtonGroup>
         </Flex>

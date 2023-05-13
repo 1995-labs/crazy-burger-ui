@@ -9,9 +9,9 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import { FiTrash } from "react-icons/fi";
-import { useCart } from "../contexts/CartContext";
-import { calculateCartItemPrice } from "../helpers/cart";
 import useMobileLayout from "../hooks/useMobileLayout";
+import { calculateCartItemPrice } from "../major/helpers/cart";
+import { useCart } from "../major/internals/CartContext";
 import { UserCheckoutDiscountType } from "./UserCentric";
 
 export const CartList = ({

@@ -1,8 +1,8 @@
 import { Box, Button, Collapse, Divider, useColorMode } from "@chakra-ui/react";
 import React from "react";
-import { useBranch } from "../contexts/BranchContext";
-import { useSearchContext } from "../contexts/SearchContext";
-import { useStoreTagsContext } from "../contexts/StoreTagsContext";
+import { useBranch } from "../major/internals/BranchContext";
+import { useSearchContext } from "../major/internals/SearchContext";
+import { useStoreTagsContext } from "../major/internals/StoreTagsContext";
 
 export const ToggleNav = () => {
   const { filters, setFilters } = useSearchContext();

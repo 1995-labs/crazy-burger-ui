@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useGetStoreTags } from "../hooks/useGetStoreTags";
 
 export type AuthContextType = {
   filters: string[];

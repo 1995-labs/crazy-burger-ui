@@ -18,9 +18,9 @@ import {
   LogisticsStateType,
   logisticsTypes,
 } from "..";
-import { useBranch } from "../../../contexts/BranchContext";
-import { useAuth } from "../../../contexts/UserContext";
 import useUserLocations from "../../../hooks/useUserLocations";
+import { useBranch } from "../../../major/internals/BranchContext";
+import { useAuth } from "../../../major/internals/UserContext";
 import { ClientType } from "../../../types/Client";
 import { LocationPickerContainer } from "../../LocationPickerContainer";
 

@@ -1,7 +1,7 @@
 // import * as Sentry from "@sentry/browser";
 import firebase from "firebase/compat/app";
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { UserType } from "../types/User";
+import { createContext, useContext, useEffect, useState } from "react";
+import { UserType } from "../../types/User";
 
 type ContextType = {
   authUser: firebase.User;

@@ -17,10 +17,10 @@ import { X } from "lucide-react";
 import React, { createContext, useContext } from "react";
 
 import { FiShoppingCart, FiTrash } from "react-icons/fi";
-import { useBranch } from "../../contexts/BranchContext";
-import { useCart } from "../../contexts/CartContext";
-import { createCartItem } from "../../helpers/cart";
 import { useGetStoreChoices } from "../../hooks/useGetStoreChoices";
+import { createCartItem } from "../../major/helpers/cart";
+import { useBranch } from "../../major/internals/BranchContext";
+import { useCart } from "../../major/internals/CartContext";
 import {
   choicesv2,
   ClientCatalogConfigType,

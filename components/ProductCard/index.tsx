@@ -8,10 +8,10 @@ import {
   Text,
   Tooltip,
 } from "@chakra-ui/react";
-import { useBranch } from "../../contexts/BranchContext";
-import { useCart } from "../../contexts/CartContext";
 import { useProductDiscounts } from "../../hooks/useProductDiscounts";
 import { useProductSubcollection } from "../../hooks/useProductSubcollection";
+import { useBranch } from "../../major/internals/BranchContext";
+import { useCart } from "../../major/internals/CartContext";
 import { ClientCatalogItemType } from "../../types/Client";
 import { MenuItemDescription } from "../MenuItemDescription";
 import ProductCardFooter from "./ProductCardFooter";

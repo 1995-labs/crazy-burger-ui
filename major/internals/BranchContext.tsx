@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
-import { useGetStoreBranches } from "../hooks/useGetStoreBranches";
-import { ClientBranchType } from "../types/Client";
+import { firestore } from "../../firebase";
+import { ClientBranchType } from "../../types/Client";
 import { useCart } from "./CartContext";
 
 export type BranchContextType = {
@@ -30,17 +30,37 @@ type ProviderType = {
 export function BranchProvider({ children }: ProviderType) {
   const [branch, setBranch] = useState<ClientBranchType>(null);
   const [showQuickView, setShowQuickView] = useState(false);
-  const { branches, loading } = useGetStoreBranches();
+  // const { branches, loading } = useGetStoreBranches();
   const { clearCart } = useCart();
+  const [branches, setBranches] = React.useState<ClientBranchType[]>([]);
+  const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    if (!loading && branches.length > 0) {
+    setLoading(true);
+    const unsub = firestore
+      .collection("stores")
+      .doc(process.env.NEXT_PUBLIC_MAJOR_CLIENT)
+      .collection("branches")
+      .onSnapshot((snap) => {
+        const local_branches: ClientBranchType[] = [];
+        snap.forEach((res) => {
+          local_branches.push({ ...(res.data() as ClientBranchType) });
+        });
+        setBranches(local_branches);
+        setLoading(false);
+      });
+
+    return () => unsub();
+    // this is a cleanup function that react will run when
+    // a component using the hook unmounts
+  }, []);
+
+  React.useEffect(() => {
+    if (branches.length > 0) {
       setBranch(branches[0]);
-      if (branches.length > 1) {
-        setShowQuickView(true);
-      }
+      setShowQuickView(branches.length > 1);
     }
-  }, [branches, loading]);
+  }, [branches]);
 
   React.useEffect(() => {
     clearCart();

@@ -1,6 +1,4 @@
 import {
-  Alert,
-  AlertIcon,
   Box,
   Button,
   Collapse,
@@ -15,15 +13,13 @@ import {
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
-import firebase from "firebase/compat/app";
 import { FileSignature } from "lucide-react";
 import { NextRouter } from "next/router";
 import React from "react";
 import { FiActivity } from "react-icons/fi";
-import { useOrderNotificationContext } from "../contexts/OrderNotificationContext";
+import { useOrderNotificationContext } from "../major/internals/OrderNotificationContext";
 // import Icon from "react-eva-icons";
 // import { A2HSProvider } from  'react-a2hs'
-import useUserRecord from "../hooks/useUserRecord";
 import { charka_dark_color } from "../shared/Header";
 import { UserOrderType } from "../types/User";
 import OrderCard from "./OrderCard";
@@ -163,25 +159,4 @@ export type UserCheckoutDiscountType = {
   checkout_discount: { discount: number; type: string };
   id: string;
   lifetime_total: number;
-};
-
-const UserStatus = ({ authUser }: { authUser: firebase.User }) => {
-  const { record, loading } = useUserRecord({ currentUser: authUser });
-
-  if (!record) {
-    return <></>;
-  }
-
-  if (record && !record.email) {
-    return (
-      <Box>
-        <Alert status="warning">
-          <AlertIcon />
-          An email address has not be added to your account
-        </Alert>
-      </Box>
-    );
-  }
-
-  return <></>;
 };

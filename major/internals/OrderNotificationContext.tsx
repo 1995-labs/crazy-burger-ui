@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { firestore } from "../firebase";
-import { UserOrderType } from "../types/User";
+import { firestore } from "../../firebase";
+import { UserOrderType } from "../../types/User";
 import { useAuth } from "./UserContext";
 
 export type OrderNotificationContextType = {

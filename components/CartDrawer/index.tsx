@@ -29,16 +29,18 @@ import PaystackPop from "@paystack/inline-js";
 import { nanoid } from "nanoid";
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import { FiShoppingCart, FiX } from "react-icons/fi";
-import { useBranch } from "../../contexts/BranchContext";
-import { useCart } from "../../contexts/CartContext";
-import { useUserRecord } from "../../contexts/RecordContext";
-import { useUserRewards } from "../../contexts/RewardsContext";
-import { useAuth } from "../../contexts/UserContext";
 import { firestore, timestamp } from "../../firebase";
-import { SignupForm } from "../../forms/SignupForm";
-import { calculateCartItemPrice, calculateCartTotal } from "../../helpers/cart";
 import { useGetStore } from "../../hooks/useGetStore";
 import useUserLocations from "../../hooks/useUserLocations";
+import {
+  calculateCartItemPrice,
+  calculateCartTotal,
+} from "../../major/helpers/cart";
+import { useBranch } from "../../major/internals/BranchContext";
+import { useCart } from "../../major/internals/CartContext";
+import { useUserRecord } from "../../major/internals/RecordContext";
+import { useUserRewards } from "../../major/internals/RewardsContext";
+import { useAuth } from "../../major/internals/UserContext";
 import { charka_dark_color_2 } from "../../shared/Header";
 import { PageLoader } from "../../shared/PageLoader";
 import { UserOrderType } from "../../types/User";
@@ -46,6 +48,7 @@ import { AddEmailToAccount } from "../AddEmailToAccount";
 import { CartList } from "../CartList";
 import MapDeliveryInput from "../MapDeliveryInput";
 import OrderCardPreview from "../OrderCardPreview";
+import { SignupForm } from "../SignupForm";
 import { OfflineAlert } from "../StoreStatus";
 import { transform } from "../UserCentric";
 import Logistics, { LogisticsLocation } from "./Tanels/Logistics";

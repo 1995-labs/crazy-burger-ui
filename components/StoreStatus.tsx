@@ -1,11 +1,9 @@
 import { Alert, AlertIcon, Box, useToast } from "@chakra-ui/react";
 import React from "react";
-import { useBranch } from "../contexts/BranchContext";
-import { useGetStoreBranches } from "../hooks/useGetStoreBranches";
+import { useBranch } from "../major/internals/BranchContext";
 
 export const StoreStatus = () => {
-  const { branches } = useGetStoreBranches();
-  const { branch } = useBranch();
+  const { branch, branches } = useBranch();
   const toast = useToast();
   const id = "test-toast";
   React.useEffect(() => {

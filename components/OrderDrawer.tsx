@@ -15,7 +15,7 @@ import {
 import firebase from "firebase/compat";
 import { X } from "lucide-react";
 import { FiArchive } from "react-icons/fi";
-import useGetCustomerRewards from "../hooks/useGetCustomerRewards";
+import { useUserRewards } from "../major/internals/RewardsContext";
 import { OrderTable } from "./OrderTable";
 
 export const OrderDrawer = ({ authUser }: { authUser: firebase.User }) => {
@@ -55,7 +55,7 @@ export const OrderDrawer = ({ authUser }: { authUser: firebase.User }) => {
           {/* <DrawerCloseButton size="lg" /> */}
 
           <DrawerBody padding={0} position="relative">
-            <UserRewards authUser={authUser} />
+            <UserRewards />
             <OrderTable onClose={onClose} authUser={authUser} />
           </DrawerBody>
           <Divider />
@@ -75,26 +75,8 @@ export const OrderDrawer = ({ authUser }: { authUser: firebase.User }) => {
   );
 };
 
-const UserRewards = ({ authUser }: { authUser: firebase.User }) => {
-  const { loading, rewards } = useGetCustomerRewards({ currentUser: authUser });
-
-  if (loading) {
-    return (
-      <Box
-        position="sticky"
-        top={0}
-        height="50px"
-        zIndex={2}
-        borderBottom={"1px solid #e2e8f0"}
-        backgroundColor="white"
-        p={4}
-      >
-        <Heading fontWeight="black" size="sm">
-          Loading rewards...
-        </Heading>
-      </Box>
-    );
-  }
+const UserRewards = () => {
+  const { rewards } = useUserRewards();
 
   if (!rewards) {
     return (

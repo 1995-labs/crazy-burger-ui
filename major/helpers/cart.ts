@@ -1,11 +1,11 @@
 import { nanoid } from "nanoid";
-import { CartOrderType } from "../contexts/CartContext";
 import {
   CartItemType,
   choicesv2,
   ClientCatalogConfigType,
   ClientCatalogItemType,
-} from "../types/Client";
+} from "../../types/Client";
+import { CartOrderType } from "../internals/CartContext";
 
 type CustomItemProps = {
   menuItem: ClientCatalogItemType;

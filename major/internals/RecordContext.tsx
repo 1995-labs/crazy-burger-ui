@@ -1,8 +1,8 @@
 // import * as Sentry from "@sentry/browser";
 import firebase from "firebase/compat/app";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
-import { firestore } from "../firebase";
-import { UserType } from "../types/User";
+import { firestore } from "../../firebase";
+import { UserType } from "../../types/User";
 
 export type UserRecordType = {
   name: string;

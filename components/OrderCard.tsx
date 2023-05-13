@@ -47,12 +47,12 @@ import {
 import { usePaystackPayment } from "react-paystack";
 import { PaystackProps } from "react-paystack/dist/types";
 import ReactStars from "react-rating-stars-component";
-import { useBranch } from "../contexts/BranchContext";
-import { useAuth } from "../contexts/UserContext";
 import { functions } from "../firebase";
-import { calculateCartItemPrice } from "../helpers/cart";
 import useGetOrderNotifications from "../hooks/useGetOrderNotifications";
 import useMobileLayout from "../hooks/useMobileLayout";
+import { calculateCartItemPrice } from "../major/helpers/cart";
+import { useBranch } from "../major/internals/BranchContext";
+import { useAuth } from "../major/internals/UserContext";
 import { UserOrderType } from "../types/User";
 // import { calculateCartTotal } from './PayButton'
 // import {  } from "./OrderDetailsModal";
@@ -841,7 +841,8 @@ function HelpModal({ order }: { order: UserOrderType }) {
               <Box>
                 <UnorderedList>
                   <ListItem>
-                    Your order is completed, thank you for choosing wingman!
+                    Your order is completed, thank you for choosing{" "}
+                    {order.storeName}!
                   </ListItem>
                   <ListItem>
                     Enjoy your meal and please leave a review!

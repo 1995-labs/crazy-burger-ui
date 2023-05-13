@@ -4,16 +4,7 @@ import { AppProps } from "next/app";
 import Head from "next/head";
 import Script from "next/script";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
-import { BranchProvider } from "../contexts/BranchContext";
-import { CartProvider } from "../contexts/CartContext";
-import { OrderNotificationContextProvider } from "../contexts/OrderNotificationContext";
-import { RecordProvider } from "../contexts/RecordContext";
-import { RewardsProvider } from "../contexts/RewardsContext";
-import { SearchContextProvider } from "../contexts/SearchContext";
-import { StoreMenuContextProvider } from "../contexts/StoreMenuContext";
-import { StoreStatusProvider } from "../contexts/StoreStatusContext";
-import { StoreTagsContextProvider } from "../contexts/StoreTagsContext";
-import { UserProvider } from "../contexts/UserContext";
+import { MajorProvider } from "../major";
 import { Footer } from "../shared/Footer";
 import { Header } from "../shared/Header";
 import "../styles/globals.css";
@@ -53,31 +44,13 @@ function MyApp({ Component, pageProps }: AppProps) {
         reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_KEY}
       >
         <ChakraProvider theme={theme}>
-          <UserProvider>
-            <RecordProvider>
-              <RewardsProvider>
-                <CartProvider>
-                  <BranchProvider>
-                    <StoreStatusProvider>
-                      <StoreMenuContextProvider>
-                        <StoreTagsContextProvider>
-                          <OrderNotificationContextProvider>
-                            <SearchContextProvider>
-                              <Box height={"100vh"} className={"primaryFont"}>
-                                <Header />
-                                <Component {...pageProps} />
-                                <Footer />
-                              </Box>
-                            </SearchContextProvider>
-                          </OrderNotificationContextProvider>
-                        </StoreTagsContextProvider>
-                      </StoreMenuContextProvider>
-                    </StoreStatusProvider>
-                  </BranchProvider>
-                </CartProvider>
-              </RewardsProvider>
-            </RecordProvider>
-          </UserProvider>
+          <MajorProvider>
+            <Box height={"100vh"} className={"primaryFont"}>
+              <Header />
+              <Component {...pageProps} />
+              <Footer />
+            </Box>
+          </MajorProvider>
         </ChakraProvider>
       </GoogleReCaptchaProvider>
     </>

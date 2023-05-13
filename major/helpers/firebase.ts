@@ -1,5 +1,5 @@
 import firebase from "firebase/compat/app";
-import { firestore } from "../firebase";
+import { firestore } from "../../firebase";
 
 export const updateUserCollectionEmail = async (
   user: firebase.User,

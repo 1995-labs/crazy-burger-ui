@@ -1,9 +1,9 @@
 import { ScaleFade, SimpleGrid } from "@chakra-ui/react";
 import { useCallback } from "react";
-import { useSearchContext } from "../contexts/SearchContext";
-import { useStoreMenuContext } from "../contexts/StoreMenuContext";
-import { useStoreTagsContext } from "../contexts/StoreTagsContext";
 import { useWindowSize } from "../hooks/useWindowSize";
+import { useSearchContext } from "../major/internals/SearchContext";
+import { useStoreMenuContext } from "../major/internals/StoreMenuContext";
+import { useStoreTagsContext } from "../major/internals/StoreTagsContext";
 import { PageLoader } from "../shared/PageLoader";
 import { ProductCard } from "./ProductCard";
 

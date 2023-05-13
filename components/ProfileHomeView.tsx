@@ -1,7 +1,6 @@
 import { Box, Button, Heading, VStack } from "@chakra-ui/react";
 import { AdjustmentsIcon } from "@heroicons/react/outline";
-import React from "react";
-import { useAuth } from "../contexts/UserContext";
+import { useAuth } from "../major/internals/UserContext";
 function ProfileHomeView({}: // authUser,
 // setProfileView,
 {

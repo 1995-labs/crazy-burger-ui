@@ -24,7 +24,7 @@ import {
   FiMapPin,
   FiTwitter,
 } from "react-icons/fi";
-import { useBranch } from "../contexts/BranchContext";
+import { useBranch } from "../major/internals/BranchContext";
 import { charka_dark_color } from "./Header";
 
 export const LocationPopper = () => {

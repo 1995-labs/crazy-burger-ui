@@ -27,9 +27,8 @@ import * as EmailValidator from "email-validator";
 import firebase from "firebase/compat";
 import { useMemo, useState } from "react";
 import { FiLogOut, FiRefreshCw, FiSave, FiUser, FiX } from "react-icons/fi";
-import { UserRecordType } from "../contexts/RecordContext";
 import { auth, firestore } from "../firebase";
-// import useUserRecord from "../hooks/useUserRecord";
+import { UserRecordType } from "../major/internals/RecordContext";
 import { UserType } from "../types/User";
 
 export const ProfileDrawer = ({

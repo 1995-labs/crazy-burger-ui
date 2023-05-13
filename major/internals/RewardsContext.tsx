@@ -1,8 +1,11 @@
 import { useToast } from "@chakra-ui/react";
 import firebase from "firebase/compat/app";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
-import { transform, UserCheckoutDiscountType } from "../components/UserCentric";
-import { firestore } from "../firebase";
+import {
+  UserCheckoutDiscountType,
+  transform,
+} from "../../components/UserCentric";
+import { firestore } from "../../firebase";
 
 const RewardsContext = createContext<{ rewards: UserCheckoutDiscountType }>({
   rewards: { checkout_discount: null, id: null, lifetime_total: null },

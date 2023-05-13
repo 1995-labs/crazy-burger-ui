@@ -1,6 +1,6 @@
 import * as React from "react";
-import { firestore } from "../firebase";
-import { ClientCatalogItemType } from "../types/Client";
+import { firestore } from "../../firebase";
+import { ClientCatalogItemType } from "../../types/Client";
 import { useBranch } from "./BranchContext";
 
 export type MenuContextType = {

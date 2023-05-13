@@ -1,6 +1,6 @@
 import * as React from "react";
-import { firestore } from "../firebase";
-import { ClientCatalogTagConfigType } from "../types/Client";
+import { firestore } from "../../firebase";
+import { ClientCatalogTagConfigType } from "../../types/Client";
 import { useBranch } from "./BranchContext";
 
 export type TagsContextType = {

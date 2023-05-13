@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { UserOrderType } from "../types/User";
+import { UserOrderType } from "../../types/User";
 
 export const hasRecentOrder = (recentOrder: UserOrderType) => {
   // console.log(recentOrder);

@@ -1,5 +1,5 @@
 import firebase from "firebase/compat/app";
-import { CartOrderType } from "../contexts/CartContext";
+import { CartOrderType } from "../major/internals/CartContext";
 import { CartItemType } from "./Client";
 
 export type UserType = {

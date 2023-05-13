@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { CartItemType, ClientCatalogItemType } from "../types/Client";
+import { CartItemType, ClientCatalogItemType } from "../../types/Client";
 
 export type CartContextType = {
   cart: CartOrderType;
