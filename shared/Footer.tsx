@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { Power, PowerOff } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   FiCheck,
   FiFacebook,
@@ -40,6 +40,10 @@ export const LocationPopper = () => {
     setShowQuickView,
   } = useBranch();
   const [selectedBranch, setSelectedBranch] = useState(null);
+
+  React.useEffect(() => {
+    setSelectedBranch(null);
+  }, [showQuickView]);
 
   return (
     <Popover isOpen={showQuickView}>
