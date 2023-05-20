@@ -11,25 +11,26 @@ import {
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
-  Select,
+  Skeleton,
   Text,
+  VStack,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { Power, PowerOff } from "lucide-react";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import {
   FiCheck,
   FiFacebook,
   FiInstagram,
   FiMapPin,
   FiTwitter,
+  FiX,
 } from "react-icons/fi";
 import { useBranch } from "../major/internals/BranchContext";
 import { charka_dark_color } from "./Header";
 
 export const LocationPopper = () => {
-  const ref = useRef(null);
-  const [newBranchOption, setNewBranchOption] = useState(null);
   const {
     branch,
     setBranch,
@@ -38,7 +39,7 @@ export const LocationPopper = () => {
     showQuickView,
     setShowQuickView,
   } = useBranch();
-  // const router = useRouter();
+  const [selectedBranch, setSelectedBranch] = useState(null);
 
   return (
     <Popover isOpen={showQuickView}>
@@ -52,12 +53,11 @@ export const LocationPopper = () => {
           }}
           boxShadow={"sm"}
         />
-        {/* <Button>Trigger</Button> */}
       </PopoverTrigger>
       <PopoverContent>
         <PopoverArrow />
-        {/* <PopoverCloseButton />
-        <PopoverHeader>Confirmation!</PopoverHeader> */}
+        {/* <PopoverCloseButton onClick={() => setShowQuickView(false)} /> */}
+
         <PopoverBody p={0}>
           <Flex p={2} justifyContent={"center"}>
             <FiMapPin size="24px" />
@@ -66,44 +66,45 @@ export const LocationPopper = () => {
             </Text>
           </Flex>
           <Divider />
-          <Box p={2}>
-            <Select
-              value={newBranchOption?.id}
-              isDisabled={branches.length === 1}
-              onChange={(e) => {
-                if (e.target.value) {
-                  console.log(e.target.value);
-                  const newBranch = branches.find(
-                    (branch) => branch.id === e.target.value
-                  );
-                  setNewBranchOption(newBranch);
-                } else {
-                  setNewBranchOption(branch);
-                }
-
-                // setShowQuickView(false);
-              }}
-              placeholder="Select option"
-            >
-              {branches.map((branch) => {
-                return (
-                  <option key={branch.id} value={branch.id}>
-                    {branch.name}
-                  </option>
-                );
-              })}
-            </Select>
+          <Box>
+            <Skeleton isLoaded={!loading}>
+              <VStack p={2}>
+                {branches.map((branch) => (
+                  <Button
+                    boxShadow={"sm"}
+                    width={"100%"}
+                    key={branch.id}
+                    onClick={() => setSelectedBranch(branch)}
+                    leftIcon={
+                      branch.online ? (
+                        <Power size={"24px"} />
+                      ) : (
+                        <PowerOff size={"24px"} />
+                      )
+                    }
+                    // colorScheme={branch.online ? "green" : "red"}
+                    colorScheme="blue"
+                    // variant={"ghost"}
+                    variant={
+                      selectedBranch?.id === branch.id ? "solid" : "outline"
+                    }
+                  >
+                    {branch.name} {branch.online ? "" : "(Offline)"}
+                  </Button>
+                ))}
+              </VStack>
+            </Skeleton>
           </Box>
           <Divider />
-          <Box p={2}>
+          <ButtonGroup width={"100%"} p={2}>
             {/*  */}
             <Button
               boxShadow={"sm"}
               colorScheme="green"
               variant={"solid"}
-              isDisabled={!newBranchOption}
+              isDisabled={!selectedBranch}
               onClick={() => {
-                setBranch(newBranchOption);
+                setBranch(selectedBranch);
                 setShowQuickView(false);
               }}
               width={"100%"}
@@ -111,7 +112,13 @@ export const LocationPopper = () => {
             >
               Set Branch
             </Button>
-          </Box>
+            <IconButton
+              icon={<FiX size={"24px"} />}
+              aria-label="Close"
+              variant={"outline"}
+              onClick={() => setShowQuickView(false)}
+            />
+          </ButtonGroup>
         </PopoverBody>
       </PopoverContent>
     </Popover>

@@ -18,7 +18,7 @@ export const StoreStatus = () => {
           title: "Sorry! We are offline right now.",
           // description: "We've created your account for you.",
           status: "warning",
-          duration: null,
+          // duration: null,
           isClosable: true,
           // position: "top",
         });
