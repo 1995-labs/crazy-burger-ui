@@ -1,4 +1,5 @@
 // import * as Sentry from "@sentry/browser";
+import va from "@vercel/analytics";
 import firebase from "firebase/compat/app";
 import { createContext, useContext, useEffect, useState } from "react";
 import { UserType } from "../../types/User";
@@ -19,6 +20,11 @@ export const UserProvider = ({ children }) => {
 
   const handleAuthStateChanged = (authState: firebase.User | null) => {
     authStateChanged(authState);
+    if (authState) {
+      va.track("Login", { email: authState.email, uid: authState.uid });
+    } else {
+      va.track("Logout");
+    }
   };
 
   const authStateChanged = (authState: firebase.User | null) => {

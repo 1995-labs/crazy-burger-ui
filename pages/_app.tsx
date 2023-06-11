@@ -1,5 +1,6 @@
 import { Box, ChakraProvider } from "@chakra-ui/react";
 import { Unbounded } from "@next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import Script from "next/script";
@@ -48,6 +49,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Box height={"100vh"} className={"primaryFont"}>
               <Header />
               <Component {...pageProps} />
+              <Analytics />
               <Footer />
             </Box>
           </MajorProvider>

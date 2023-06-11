@@ -1,4 +1,6 @@
+import va from "@vercel/analytics";
 import React, { createContext, useContext, useState } from "react";
+
 import { CartItemType, ClientCatalogItemType } from "../../types/Client";
 
 export type CartContextType = {
@@ -41,10 +43,12 @@ export function CartProvider({ children }: ProviderType) {
 
   const addToCart = (product: CartItemType) => {
     setCart([...cart, product]);
+    va.track("addToCart", { name: product.name });
   };
 
   const removeFromCart = (product: CartItemType) => {
     setCart(cart.filter((item) => item.cartId !== product.cartId));
+    va.track("removeFromCart", { name: product.name });
   };
 
   const cartIncludes = (product: ClientCatalogItemType) =>

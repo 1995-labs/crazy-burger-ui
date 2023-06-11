@@ -26,6 +26,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import PaystackPop from "@paystack/inline-js";
+import va from "@vercel/analytics";
 import { nanoid } from "nanoid";
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import { FiShoppingCart, FiX } from "react-icons/fi";
@@ -593,6 +594,7 @@ const SaveLocation = ({
         lng: state.location.lng,
       })
       .then(() => {
+        va.track("LocationSaveSuccess");
         toast({
           title: "Location Saved",
           description:
@@ -604,6 +606,7 @@ const SaveLocation = ({
         setHide(true);
       })
       .catch((error) => {
+        va.track("LocationSaveFailed");
         toast({
           title: "Failed to save location",
           description: "Please try again!",
@@ -817,8 +820,10 @@ const PayButton = ({
           onCancel: paymentFail,
           onSuccess: paymentSuccess,
         });
+        va.track("cartSuccess");
       })
       .catch((error) => {
+        va.track("cartFail");
         // console.log({ error });
         toast({
           title: "We failed to place your order.",
