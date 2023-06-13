@@ -16,9 +16,12 @@ import {
   VStack,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { Power, PowerOff } from "lucide-react";
+import { Map, Power, PowerOff } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
+// import { Map } from "lucide-react";
+
+import { useRouter } from "next/router";
 import {
   FiCheck,
   FiFacebook,
@@ -39,11 +42,19 @@ export const LocationPopper = () => {
     showQuickView,
     setShowQuickView,
   } = useBranch();
+  const router = useRouter();
+
   const [selectedBranch, setSelectedBranch] = useState(null);
 
   React.useEffect(() => {
-    setSelectedBranch(null);
-  }, [showQuickView]);
+    if (branch) {
+      setSelectedBranch(branch);
+    }
+  }, [branch]);
+
+  // React.useEffect(() => {
+  //   setSelectedBranch(null);
+  // }, [showQuickView]);
 
   return (
     <Popover isOpen={showQuickView}>
@@ -123,6 +134,20 @@ export const LocationPopper = () => {
               onClick={() => setShowQuickView(false)}
             />
           </ButtonGroup>
+          <Divider />
+          <Box p={2}>
+            <Button
+              onClick={() =>
+                router.push(
+                  `https://maps.google.com/?q=${branch.coordinates.lat},${branch.coordinates.lng}`
+                )
+              }
+              width={"100%"}
+              leftIcon={<Map size={"24px"} />}
+            >
+              Open Directions
+            </Button>
+          </Box>
         </PopoverBody>
       </PopoverContent>
     </Popover>
