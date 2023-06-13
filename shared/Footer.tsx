@@ -52,12 +52,13 @@ export const LocationPopper = () => {
     }
   }, [branch]);
 
-  // React.useEffect(() => {
-  //   setSelectedBranch(null);
-  // }, [showQuickView]);
+  const handleClose = () => {
+    setSelectedBranch(branch);
+    setShowQuickView(false);
+  };
 
   return (
-    <Popover isOpen={showQuickView}>
+    <Popover isOpen={showQuickView} onClose={handleClose}>
       <PopoverTrigger>
         <IconButton
           isLoading={loading}
@@ -131,7 +132,7 @@ export const LocationPopper = () => {
               icon={<FiX size={"24px"} />}
               aria-label="Close"
               variant={"outline"}
-              onClick={() => setShowQuickView(false)}
+              onClick={handleClose}
             />
           </ButtonGroup>
           <Divider />
