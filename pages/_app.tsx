@@ -3,7 +3,6 @@ import { Unbounded } from "@next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { AppProps } from "next/app";
 import Head from "next/head";
-import Script from "next/script";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { MajorProvider } from "../major";
 import { Footer } from "../shared/Footer";
@@ -28,11 +27,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         ></link>
         <title>Crazy Burger - Order Online</title>
       </Head>
-      <Script
-        defer
-        data-domain="crazyburgergh.com"
-        src="https://plausible.io/js/script.js"
-      />
       <style jsx global>{`
         html {
           font-family: ${inter.style.fontFamily};

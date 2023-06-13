@@ -22,8 +22,6 @@ export const UserProvider = ({ children }) => {
     authStateChanged(authState);
     if (authState) {
       va.track("Login", { email: authState.email, uid: authState.uid });
-    } else {
-      va.track("Logout");
     }
   };
 
